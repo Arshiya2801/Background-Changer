@@ -1,12 +1,21 @@
-# React + Vite
+# 🎨 Background Changer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and fun React app to change the background color with a single click! Built using **ReactJS** and **Tailwind CSS**, it's perfect for beginners looking to get hands-on with state management and styling in React.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔥 Features
 
-## Expanding the ESLint configuration
+- One-click background color change
+- Random color selection from a predefined palette
+- Responsive, modern UI with Tailwind CSS
+- Smooth transition effects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+## 🛠️ Tech Stack
+
+- ⚛️ ReactJS
+- 🎨 Tailwind CSS
+- 🔧 Vite (or CRA — you can adapt based on your setup)
+
+---
