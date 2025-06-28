@@ -16,6 +16,5 @@ A simple and fun React app to change the background color with a single click! B
 
 - ⚛️ ReactJS
 - 🎨 Tailwind CSS
-- 🔧 Vite (or CRA — you can adapt based on your setup)
-
+- 🔧 Vite 
 ---
