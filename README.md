@@ -19,9 +19,16 @@ A simple and stylish React app to change the background color dynamically. Built
 - **Copy to Clipboard:** Copy the current color name with one click.
 - **Responsive & Stylish UI:** Clean and modern design with Tailwind CSS.
 ---
+
 ## 🛠️ Tech Stack
 
 - ⚛️ ReactJS
 - 🎨 Tailwind CSS
-- 🔧 Vite 
+- 🔧 Vite
 ---
+
+## Demo
+
+![Demo Screenshot]![image](https://github.com/user-attachments/assets/50a32d80-1608-4875-9355-f4f8403754c5)
+
+
