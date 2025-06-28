@@ -1,43 +1,116 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react";
+import DarkModeToggle from "./DarkModeToggle";
 
-import './App.css'
+const colorList = [
+  "red",
+  "blue",
+  "pink",
+  "green",
+  "black",
+  "orange",
+  "purple",
+  "teal",
+  "yellow",
+  "indigo",
+];
 
 function App() {
-  const [color,setColor]=useState("olive")
- 
+  const [color, setColor] = useState("olive");
+  const [mode, setMode] = useState("light"); 
+  const [history, setHistory] = useState([]);
+
+  const textColor = mode === "dark" ? "text-white" : "text-black";
+
+  
+  useEffect(() => {
+    if (color && (history.length === 0 || history[0] !== color)) {
+      setHistory([color, ...history].slice(0, 10)); 
+    }
+  }, [color]);
+
+  const handleRandomColor = () => {
+    const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
+    setColor(randomColor);
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(color);
+    alert(`Copied "${color}" to clipboard!`);
+  };
+
+  const toggleMode = () => setMode(mode === "light" ? "dark" : "light");
 
   return (
-    <div className="w-full h-screen duration=200" style={{backgroundColor:color}}>
-      <p className="text-3xl md:text-3xl font-extrabold text-center text-black tracking-wide uppercase bg-gradient-to-r from-yellow-100 via-beige to-white py-3 rounded-md shadow-lg">
-  Background Changer
-</p>
+    <div
+      className={`min-h-screen transition-colors duration-500 ${
+        mode === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
+    >
+      <header className="w-full px-6 py-4 max-w-4xl mx-auto relative">
+      <h1
+      className={`absolute left-1/2 transform -translate-x-1/2 text-4xl font-extrabold uppercase tracking-wide ${textColor} whitespace-nowrap`}
+      >
+        🎨 Background Changer
+      </h1>
 
-      
-      <div className='fixed flex flex-wrap justify-center items-center bottom-10 inset-x-0 px-2'>
-        <div className='flex flex-wrap justiy-center gap-3 bg-white px-3 py-2 rounded-3xl'>
-          <button onClick={()=>{setColor("red")}} 
-          className='px-4 py-1 rounded-full' style={{backgroundColor:"red"}}>Red</button>
 
-          <button 
-          onClick={()=>{setColor("blue")}} 
-          className='px-4 py-1 rounded-full' style={{backgroundColor:"blue"}}>blue</button>
+  <div className="absolute top-4 right-6">
+    <DarkModeToggle mode={mode} toggleMode={toggleMode} />
+  </div>
+</header>
 
-          <button onClick={()=>{
-            setColor("pink")
-          }} className='px-4 py-1 rounded-full' style={{backgroundColor:"pink"}}>pink</button>
+      <p className={`mt-2 mb-6 text-xl font-medium ${textColor}`}>
+        Current Color: <span className="font-bold">{color}</span>
+      </p>
 
-          <button onClick={()=>{
-            setColor("grwen")
-          }} className='px-4 py-1 rounded-full' style={{backgroundColor:"green"}}>green</button>
+      <div className="flex flex-wrap justify-center gap-4 max-w-4xl px-6 mx-auto">
+        {colorList.map((c) => (
+          <button
+            key={c}
+            onClick={() => setColor(c)}
+            className={`px-5 py-2 rounded-full text-white capitalize font-medium shadow transition-transform hover:scale-105 ${
+              color === c ? "ring-4 ring-white" : ""
+            }`}
+            style={{ backgroundColor: c }}
+          >
+            {c}
+          </button>
+        ))}
 
-          <button onClick={()=>{
-            setColor("black")
-          }} className='px-4 py-1 rounded-full text-white' style={{backgroundColor:"black"}}>black</button>
-        </div>
+        <button
+          onClick={handleRandomColor}
+          className="px-5 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-semibold rounded-full shadow hover:scale-105 transition"
+        >
+          Random
+        </button>
+
+        <button
+          onClick={copyToClipboard}
+          className="px-5 py-2 bg-black text-white font-semibold rounded-full shadow hover:bg-gray-800 transition"
+        >
+          Copy Color
+        </button>
       </div>
+
+      {/* Color history */}
+      {history.length > 0 && (
+        <section className="mt-10 max-w-4xl w-full px-6 mx-auto">
+          <h2 className={`text-2xl font-semibold mb-4 ${textColor}`}>Color History</h2>
+          <div className="flex flex-wrap gap-3">
+            {history.map((c, i) => (
+              <button
+                key={`${c}-${i}`}
+                onClick={() => setColor(c)}
+                className="w-10 h-10 rounded-full border-2 border-white shadow-lg"
+                style={{ backgroundColor: c }}
+                title={c}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
- 
+export default App;
