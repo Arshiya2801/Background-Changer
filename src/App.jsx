@@ -46,12 +46,11 @@ function App() {
         mode === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
-      <header className="w-full px-6 py-4 max-w-4xl mx-auto relative">
-      <h1
-      className={`absolute left-1/2 transform -translate-x-1/2 text-4xl font-extrabold uppercase tracking-wide ${textColor} whitespace-nowrap`}
-      >
-        🎨 Background Changer
-      </h1>
+      <header className="w-full px-6 text-center py-4 max-w-4xl mx-auto relative">
+      <h1 className={`text-4xl font-extrabold uppercase tracking-wide ${textColor}`}>
+          🎨 Background Changer
+        </h1>
+
 
 
   <div className="absolute top-4 right-6">
