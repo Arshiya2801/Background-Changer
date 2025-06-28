@@ -27,8 +27,7 @@ A simple and stylish React app to change the background color dynamically. Built
 - 🔧 Vite
 ---
 
-## Demo
-
-![Demo Screenshot]![image](https://github.com/user-attachments/assets/50a32d80-1608-4875-9355-f4f8403754c5)
+## UI Preview
+[Demo Screenshot]![image](https://github.com/user-attachments/assets/50a32d80-1608-4875-9355-f4f8403754c5)
 
 
